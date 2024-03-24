@@ -54,16 +54,16 @@ public class Player {
 	public void update() {
 		
 		if(keyH.downPressed) {
-			if(speed > -maxSpeed) { speed--; }
+			if(speed > -maxSpeed) { speed-= 4; }
 		}
 		
 		if(keyH.upPressed) {
-			if(speed < maxSpeed) { speed++; }
+			if(speed < maxSpeed) { speed+= 4; }
 		}
 		
 		if(!(keyH.upPressed || keyH.downPressed)) {
-			if(speed < 0) { speed++; }
-			if(speed > 0) { speed--; }
+			if(speed < 0) { speed+= 4; }
+			if(speed > 0) { speed-= 4; }
 		}
 		
 		if(keyH.leftPressed) {
