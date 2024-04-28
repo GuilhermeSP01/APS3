@@ -4,7 +4,8 @@ import java.awt.Rectangle;
 
 public class Element {
 	
-	public int playerX, playerY;
+	public int x, y;
+	public int speed;
 	
 	public String direction;
 	public Rectangle solidArea;

@@ -19,7 +19,7 @@ public class TileManager {
 		this.gp = gp;
 
 		tile = new Tile[22];
-		mapTileNum = new int[gp.maxScreenCol][gp.maxScreenRow];
+		mapTileNum = new int[gp.maxWorldCol][gp.maxWorldRow];
 		
 		getTileImage();
 		loadMap("/maps/map-side-one.txt");
@@ -115,11 +115,11 @@ public class TileManager {
 			int col = 0;
 			int row = 0;
 			
-			while(col < gp.maxScreenCol && row < gp.maxScreenRow) {
+			while(col < gp.maxWorldCol && row < gp.maxWorldRow) {
 			
 				String line = br.readLine();
 				
-				while (col < gp.maxScreenCol) {
+				while (col < gp.maxWorldCol) {
 					
 					String numbers[] = line.split(" ");
 					
@@ -129,7 +129,7 @@ public class TileManager {
 					col++;
 				}
 				
-				if (col == gp.maxScreenCol) {
+				if (col == gp.maxWorldCol) {
 					
 					col = 0;
 					row++;
@@ -148,22 +148,25 @@ public class TileManager {
 		
 		int col = 0;
 		int row = 0;
-		int x = 0;
-		int y = 0;
 		
-		while(col < gp.maxScreenCol && row < gp.maxScreenRow) {
+		while(col < gp.maxWorldCol && row < gp.maxWorldRow) {
 			
 			int tileNum = mapTileNum[col][row];
 			
-			g2.drawImage(tile[tileNum].image, x, y, gp.tileSize, gp.tileSize, null);
-			col ++;
-			x += gp.tileSize;
+			int x = col * gp.tileSize;
+			int y = row * gp.tileSize;
+			int screenX = x - gp.player.x + gp.player.screenX;
+			int screenY = y - gp.player.y + gp.player.screenY;
 			
-			if (col == gp.maxScreenCol) {
+			if (x + gp.tileSize > gp.player.x - gp.player.screenX && x - gp.tileSize < gp.player.x + gp.player.screenX && y + gp.tileSize > gp.player.y - gp.player.screenY && y - gp.tileSize < gp.player.y + gp.player.screenY) {
+				g2.drawImage(tile[tileNum].image, screenX, screenY, gp.tileSize, gp.tileSize, null);
+			}
+			
+			col ++;
+			
+			if (col == gp.maxWorldCol) {
 				col = 0;
-				x = 0;
 				row++;
-				y += gp.tileSize;
 			}
 		}
 				

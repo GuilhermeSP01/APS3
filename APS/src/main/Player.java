@@ -12,10 +12,10 @@ public class Player {
 	KeyHandler keyH;
 	public BufferedImage sprite, Up, UpR, UpR2, UpR3, UpL, UpL2, UpL3, Down, DownR, DownR2, DownR3, DownL, DownL2, DownL3, Right, Left;
 	
-	int x;
-	int y;
-	int screenX;
-	int screenY;
+	public int x;
+	public int y;
+	public int screenX;
+	public int screenY;
 	int speed = 0;
 	int maxSpeed = 40;
 	int direction = 0;
