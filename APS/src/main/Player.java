@@ -18,7 +18,7 @@ public class Player {
 	int maxSpeed = 40;
 	int direction = 0;
 	int timer = 0;
-	int timerLimit = 20;
+	int timerLimit = 9;
 	
 	public Player(GamePanel gp, KeyHandler keyH) {
 		this.gp = gp;
