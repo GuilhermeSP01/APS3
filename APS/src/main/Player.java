@@ -26,8 +26,8 @@ public class Player {
 		this.gp = gp;
 		this.keyH = keyH;
 		
-		this.x = gp.tileSize * 12;
-		this.y = gp.tileSize * 6;
+		this.x = gp.tileSize * 12; //12
+		this.y = gp.tileSize * 6; //6
 		
 		this.screenX = gp.screenWidth/2 - (gp.tileSize/2);
 		this.screenY = gp.screenHeight/2 - (gp.tileSize/2);
