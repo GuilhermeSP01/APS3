@@ -7,8 +7,6 @@ import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
 
-import tile.TileManager;
-
 public class GamePanel extends JPanel implements Runnable{
 	
 	final int originalTileSize = 50; // 50x50 tile
