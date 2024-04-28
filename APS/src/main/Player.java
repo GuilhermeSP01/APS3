@@ -12,8 +12,10 @@ public class Player {
 	KeyHandler keyH;
 	public BufferedImage sprite, Up, UpR, UpR2, UpR3, UpL, UpL2, UpL3, Down, DownR, DownR2, DownR3, DownL, DownL2, DownL3, Right, Left;
 	
-	int x = 300;
-	int y = 400;
+	int x;
+	int y;
+	int screenX;
+	int screenY;
 	int speed = 0;
 	int maxSpeed = 40;
 	int direction = 0;
@@ -24,6 +26,11 @@ public class Player {
 		this.gp = gp;
 		this.keyH = keyH;
 		
+		this.x = gp.tileSize * 12;
+		this.y = gp.tileSize * 6;
+		
+		this.screenX = gp.screenWidth/2 - (gp.tileSize/2);
+		this.screenY = gp.screenHeight/2 - (gp.tileSize/2);
 		getPlayerImage();
 	}
 	

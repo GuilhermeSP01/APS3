@@ -11,7 +11,7 @@ import tile.TileManager;
 
 public class GamePanel extends JPanel implements Runnable{
 	
-	final int originalTileSize = 50; // 50x50 tile
+	final int originalTileSize = 64; // 50x50 tile
 	final int scale = 1;
 	public final int tileSize = originalTileSize * scale; // 50x50 tile
 	
