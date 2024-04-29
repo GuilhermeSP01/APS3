@@ -7,7 +7,7 @@ public class Element {
 	public int x, y;
 	public int speed;
 	
-	public String direction;
+	public int playerDir;
 	public Rectangle solidArea;
 	public boolean collisionOn = false;
 

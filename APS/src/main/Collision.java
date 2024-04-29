@@ -10,35 +10,52 @@ public class Collision {
 		this.gp = gp;
 	}
 	
-	public void checkTile(Element element) {
+	public void checkTile(Player player) {
 		
-		int elementLeftWorldX = element.playerX + element.solidArea.x;
-		int elementRightWorldX = element.playerX + element.solidArea.x + element.solidArea.width;
-		int elementTopWorldY = element.playerY + element.solidArea.y;
-		int elementBottomWorldY = element.playerY + element.solidArea.y + element.solidArea.height;
+		int elementLeftPlayerX = player.x + player.solidArea.x;
+		int elementRightPlayerX = player.x + player.solidArea.x + player.solidArea.width;
+		int elementTopPlayerY = player.y + player.solidArea.y;
+		int elementBottomPlayerY = player.y + player.solidArea.y + player.solidArea.height;
 		
-		int elementLeftCol = elementLeftWorldX/gp.tileSize;
-		int elementRightCol = elementRightWorldX/gp.tileSize;
-		int elementTopRow = elementTopWorldY/gp.tileSize;
-		int elementBottomRow = elementBottomWorldY/gp.tileSize;
+		int elementLeftCol = elementLeftPlayerX/gp.tileSize;
+		int elementRightCol = elementRightPlayerX/gp.tileSize;
+		int elementTopRow = elementTopPlayerY/gp.tileSize;
+		int elementBottomRow = elementBottomPlayerY/gp.tileSize;
 		
 		int tileOne, tileTwo;
-		//testeeee
-		switch(element.direction) {
+
+		switch(player.direction) {
 		
-		case "up":
-			elementTopRow = (elementTopWorldY - element.)/gp.originalTileSize;
+		case 0:
+	
+			System.out.println("oi");
+			
+			elementTopRow = (elementTopPlayerY - player.speed)/gp.tileSize;
+			tileOne = gp.tileM.mapTileNum[elementLeftCol][elementTopRow];
+			tileTwo = gp.tileM.mapTileNum[elementRightCol][elementTopRow];
+			
+			if(gp.tileM.tile[tileOne].collision == true || gp.tileM.tile[tileTwo].collision == true) {
+				player.collisionOn = true;
+				
+			}
 			
 			break;
 			
-		case "down":
+		case 1:
+			
+			
 			break;
 			
-		case "left":
+		case 2:
+
 			break;
 			
-		case "right":
+		case 3:
+			
+			
 			break;
+			
+		default: System.out.println("oi");
 		}
 		
 	}

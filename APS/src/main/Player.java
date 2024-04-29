@@ -1,12 +1,15 @@
 package main;
 
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-public class Player {
+import element.Element;
+
+public class Player extends Element {
 
 	GamePanel gp;
 	KeyHandler keyH;
@@ -31,6 +34,13 @@ public class Player {
 		
 		this.screenX = gp.screenWidth/2 - (gp.tileSize/2);
 		this.screenY = gp.screenHeight/2 - (gp.tileSize/2);
+		
+		solidArea = new Rectangle();
+		solidArea.x = 22;
+		solidArea.y = 22;
+		solidArea.width = 20;
+		solidArea.height = 20;
+		
 		getPlayerImage();
 	}
 	
@@ -82,7 +92,7 @@ public class Player {
 			if(keyH.upPressed && timer >= timerLimit) {	direction++; }
 			if(keyH.downPressed && timer >= timerLimit) { direction--; }
 		}
-		
+
 		if(timer >= timerLimit) { timer = 0; }
 		if(direction > 15) { direction = 0; }
 		if(direction < 0) { direction = 15; }
@@ -95,71 +105,78 @@ public class Player {
 			timer = 0;
 		}
 		
-		switch(direction) {
-			case 0:
-				y += -1 * (speed / 10);
-				x += 0 * (speed / 10);
-				break;
-			case 1:
-				y += -0.75 * (speed / 10);
-				x += 0.25 * (speed / 10);
-				break;
-			case 2:
-				y += -0.5 * (speed / 10);
-				x += 0.5 * (speed / 10);
-				break;
-			case 3:
-				y += -0.25 * (speed / 10);
-				x += 0.75 * (speed / 10);
-				break;
-			case 4:
-				y += 0 * (speed / 10);
-				x += 1 * (speed / 10);
-				break;
-			case 5:
-				y += 0.25 * (speed / 10);
-				x += 0.75 * (speed / 10);
-				break;
-			case 6:
-				y += 0.5 * (speed / 10);
-				x += 0.5 * (speed / 10);
-				break;
-			case 7:
-				y += 0.75 * (speed / 10);
-				x += 0.25 * (speed / 10);
-				break;
-			case 8:
-				y += 1 * (speed / 10);
-				x += 0 * (speed / 10);
-				break;
-			case 9:
-				y += 0.75 * (speed / 10);
-				x += -0.25 * (speed / 10);
-				break;
-			case 10:
-				y += 0.5 * (speed / 10);
-				x += -0.5 * (speed / 10);
-				break;
-			case 11:
-				y += 0.25 * (speed / 10);
-				x += -0.75 * (speed / 10);
-				break;
-			case 12:
-				y += 0 * (speed / 10);
-				x += -1 * (speed / 10);
-				break;
-			case 13:
-				y += -0.25 * (speed / 10);
-				x += -0.75 * (speed / 10);
-				break;
-			case 14:
-				y += -0.5 * (speed / 10);
-				x += -0.5 * (speed / 10);
-				break;
-			case 15:
-				y += -0.75 * (speed / 10);
-				x += -0.25 * (speed / 10);
-				break;
+		collisionOn = false;
+		gp.checker.checkTile(this);
+		
+		if(collisionOn == false) {
+		
+			switch(direction) {
+				case 0:
+					y += -1 * (speed / 10);
+					x += 0 * (speed / 10);
+					break;
+				case 1:
+					y += -0.75 * (speed / 10);
+					x += 0.25 * (speed / 10);
+					break;
+				case 2:
+					y += -0.5 * (speed / 10);
+					x += 0.5 * (speed / 10);
+					break;
+				case 3:
+					y += -0.25 * (speed / 10);
+					x += 0.75 * (speed / 10);
+					break;
+				case 4:
+					y += 0 * (speed / 10);
+					x += 1 * (speed / 10);
+					break;
+				case 5:
+					y += 0.25 * (speed / 10);
+					x += 0.75 * (speed / 10);
+					break;
+				case 6:
+					y += 0.5 * (speed / 10);
+					x += 0.5 * (speed / 10);
+					break;
+				case 7:
+					y += 0.75 * (speed / 10);
+					x += 0.25 * (speed / 10);
+					break;
+				case 8:
+					y += 1 * (speed / 10);
+					x += 0 * (speed / 10);
+					break;
+				case 9:
+					y += 0.75 * (speed / 10);
+					x += -0.25 * (speed / 10);
+					break;
+				case 10:
+					y += 0.5 * (speed / 10);
+					x += -0.5 * (speed / 10);
+					break;
+				case 11:
+					y += 0.25 * (speed / 10);
+					x += -0.75 * (speed / 10);
+					break;
+				case 12:
+					y += 0 * (speed / 10);
+					x += -1 * (speed / 10);
+					break;
+				case 13:
+					y += -0.25 * (speed / 10);
+					x += -0.75 * (speed / 10);
+					break;
+				case 14:
+					y += -0.5 * (speed / 10);
+					x += -0.5 * (speed / 10);
+					break;
+				case 15:
+					y += -0.75 * (speed / 10);
+					x += -0.25 * (speed / 10);
+					break;
+			}
+			
 		}
 		
 	}
