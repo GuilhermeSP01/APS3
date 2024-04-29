@@ -17,7 +17,7 @@ public class Player {
 	public int screenX;
 	public int screenY;
 	int speed = 0;
-	int maxSpeed = 40;
+	int maxSpeed = 60;
 	int direction = 0;
 	int timer = 0;
 	int timerLimit = 9;
@@ -26,8 +26,8 @@ public class Player {
 		this.gp = gp;
 		this.keyH = keyH;
 		
-		this.x = gp.tileSize * 12; //12
-		this.y = gp.tileSize * 6; //6
+		this.x = gp.tileSize * 12;
+		this.y = gp.tileSize * 6;
 		
 		this.screenX = gp.screenWidth/2 - (gp.tileSize/2);
 		this.screenY = gp.screenHeight/2 - (gp.tileSize/2);
@@ -183,6 +183,6 @@ public class Player {
 		if(direction == 14) { sprite = UpL; }
 		if(direction == 15) { sprite = UpL3; }
 		
-		g2.drawImage(sprite, x, y, gp.tileSize, gp.tileSize, null);
+		g2.drawImage(sprite, screenX, screenY, gp.tileSize, gp.tileSize, null);
 	}
 }
