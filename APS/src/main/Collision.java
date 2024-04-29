@@ -23,7 +23,7 @@ public class Collision {
 		int elementBottomRow = elementBottomWorldY/gp.tileSize;
 		
 		int tileOne, tileTwo;
-		
+		//testeeee
 		switch(element.direction) {
 		
 		case "up":
