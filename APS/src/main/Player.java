@@ -13,7 +13,7 @@ public class Player extends Element {
 
 	GamePanel gp;
 	KeyHandler keyH;
-	public BufferedImage sprite, Up, UpR, UpR2, UpR3, UpL, UpL2, UpL3, Down, DownR, DownR2, DownR3, DownL, DownL2, DownL3, Right, Left;
+	public BufferedImage sprite, Up, Down, Right, Left;
 	
 	public int x;
 	public int y;
@@ -22,8 +22,6 @@ public class Player extends Element {
 	int speed = 0;
 	int maxSpeed = 5;
 	int direction = 0;
-	int timer = 0;
-	int timerLimit = 9;
 	
 	public Player(GamePanel gp, KeyHandler keyH) {
 		this.gp = gp;
@@ -49,19 +47,7 @@ public class Player extends Element {
 			
 			sprite = ImageIO.read(getClass().getResourceAsStream("/player/truck120.png"));
 			Up = ImageIO.read(getClass().getResourceAsStream("/player/truck120U.png"));
-			UpR3 = ImageIO.read(getClass().getResourceAsStream("/player/truck120UR3.png"));
-			UpR = ImageIO.read(getClass().getResourceAsStream("/player/truck120UR.png"));
-			UpR2 = ImageIO.read(getClass().getResourceAsStream("/player/truck120UR2.png"));
-			UpL3 = ImageIO.read(getClass().getResourceAsStream("/player/truck120UL3.png"));
-			UpL = ImageIO.read(getClass().getResourceAsStream("/player/truck120UL.png"));
-			UpL2 = ImageIO.read(getClass().getResourceAsStream("/player/truck120UL2.png"));
 			Down = ImageIO.read(getClass().getResourceAsStream("/player/truck120D.png"));
-			DownR3 = ImageIO.read(getClass().getResourceAsStream("/player/truck120DR3.png"));
-			DownR = ImageIO.read(getClass().getResourceAsStream("/player/truck120DR.png"));
-			DownR2 = ImageIO.read(getClass().getResourceAsStream("/player/truck120DR2.png"));
-			DownL3 = ImageIO.read(getClass().getResourceAsStream("/player/truck120DL3.png"));
-			DownL = ImageIO.read(getClass().getResourceAsStream("/player/truck120DL.png"));
-			DownL2 = ImageIO.read(getClass().getResourceAsStream("/player/truck120DL2.png"));
 			Right = ImageIO.read(getClass().getResourceAsStream("/player/truck120R.png"));
 			Left = ImageIO.read(getClass().getResourceAsStream("/player/truck120L.png"));			
 			
@@ -108,21 +94,9 @@ public class Player extends Element {
 	public void draw(Graphics2D g2) {
 		
 		if(direction == 0) { sprite = Up; }
-		if(direction == 1) { sprite = UpR3; }
-		if(direction == 2) { sprite = UpR; }
-		if(direction == 3) { sprite = UpR2; }
 		if(direction == 4) { sprite = Right; }
-		if(direction == 5) { sprite = DownR2; }
-		if(direction == 6) { sprite = DownR; }
-		if(direction == 7) { sprite = DownR3; }
 		if(direction == 8) { sprite = Down; }
-		if(direction == 9) { sprite = DownL3; }
-		if(direction == 10) { sprite = DownL; }
-		if(direction == 11) { sprite = DownL2; }
 		if(direction == 12) { sprite = Left; }
-		if(direction == 13) { sprite = UpL2; }
-		if(direction == 14) { sprite = UpL; }
-		if(direction == 15) { sprite = UpL3; }
 		
 		g2.drawImage(sprite, screenX, screenY, gp.tileSize, gp.tileSize, null);
 	}

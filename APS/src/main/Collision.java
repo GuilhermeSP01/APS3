@@ -28,73 +28,43 @@ public class Collision {
 		
 		case 0:
 	
-			elementTopRow = (elementTopPlayerY - player.speed)/gp.tileSize;
+			elementTopRow = (elementTopPlayerY - player.speed/10 - 4)/gp.tileSize;
 			tileOne = gp.tileM.mapTileNum[elementLeftCol][elementTopRow];
 			tileTwo = gp.tileM.mapTileNum[elementRightCol][elementTopRow];
 			
 			if(gp.tileM.tile[tileOne].collision == true || gp.tileM.tile[tileTwo].collision == true) {
 				player.collisionOn = true;
-				
 			}
 			
 			break;
 			
-		case 1:			
-			break;
-			
-		case 2:			
-			break;			
-			
-		case 3:
-			break;
-			
 		case 4:
 			
-			elementRightCol = (elementRightPlayerX + player.speed)/gp.tileSize;
+			elementRightCol = (elementRightPlayerX + player.speed/10 + 4)/gp.tileSize;
 			tileOne = gp.tileM.mapTileNum[elementRightCol][elementTopRow];
 			tileTwo = gp.tileM.mapTileNum[elementRightCol][elementBottomRow];
 			
 			if(gp.tileM.tile[tileOne].collision == true || gp.tileM.tile[tileTwo].collision == true) {
 				player.collisionOn = true;
-				
 			}			
 			
 			break;
 			
-		case 5:
-			break;
-		
-		case 6:
-			break;
-		
-		case 7:
-			break;
-			
 		case 8:
 			
-			elementBottomRow = (elementBottomPlayerY + player.speed)/gp.tileSize;
+			elementBottomRow = (elementBottomPlayerY + player.speed/10 + 4)/gp.tileSize;
 			tileOne = gp.tileM.mapTileNum[elementLeftCol][elementBottomRow];
 			tileTwo = gp.tileM.mapTileNum[elementRightCol][elementBottomRow];
 			
 			if(gp.tileM.tile[tileOne].collision == true || gp.tileM.tile[tileTwo].collision == true) {
 				player.collisionOn = true;
-				
 			}
 			
 			break;
 			
-		case 9:
-			break;
-			
-		case 10:
-			break;
-			
-		case 11:
-			break;
-			
 		case 12:
 			
-			elementLeftCol = (elementLeftPlayerX - player.speed)/gp.tileSize;
+			elementLeftCol = (elementLeftPlayerX - player.speed/10 - 4)/gp.tileSize;
 			tileOne = gp.tileM.mapTileNum[elementLeftCol][elementTopRow];
 			tileTwo = gp.tileM.mapTileNum[elementLeftCol][elementBottomRow];
 			
@@ -103,15 +73,6 @@ public class Collision {
 				
 			}
 
-			break;
-			
-		case 13:
-			break;
-			
-		case 14:
-			break;
-			
-		case 15:
 			break;
 			
 		}
