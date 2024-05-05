@@ -70,40 +70,23 @@ public class Player extends Element {
 	
 	public void update() {
 		
-		if(keyH.downPressed) {
-			if(speed > -maxSpeed) { speed-= 4; }
+		if((keyH.upPressed && !keyH.downPressed) || (!keyH.upPressed && keyH.downPressed)) {
+			
+			if(keyH.upPressed) { direction = 0;	}
+			if(keyH.downPressed) { direction = 8; }
+			speed = 4;
+			
+		} else if((keyH.rightPressed && !keyH.leftPressed) || (!keyH.rightPressed && keyH.leftPressed)) {
+			
+			if(keyH.leftPressed) { direction = 12; }
+			if(keyH.rightPressed) {	direction = 4;	}
+			speed = 4;
+			
+		} else {
+			speed = 0;
 		}
 		
-		if(keyH.upPressed) {
-			if(speed < maxSpeed) { speed+= 4; }
-		}
 		
-		if(!(keyH.upPressed || keyH.downPressed)) {
-			if(speed < 0) { speed+= 4; }
-			if(speed > 0) { speed-= 4; }
-		}
-		
-		if(keyH.leftPressed) {
-			if(keyH.upPressed && timer >= timerLimit) {	direction--; }
-			if(keyH.downPressed && timer >= timerLimit) {	direction++; }
-		}
-		
-		if(keyH.rightPressed) {
-			if(keyH.upPressed && timer >= timerLimit) {	direction++; }
-			if(keyH.downPressed && timer >= timerLimit) { direction--; }
-		}
-
-		if(timer >= timerLimit) { timer = 0; }
-		if(direction > 15) { direction = 0; }
-		if(direction < 0) { direction = 15; }
-		
-		if(keyH.leftPressed || keyH.rightPressed) {
-			timer++;
-		}
-		
-		if(!(keyH.leftPressed || keyH.rightPressed)) {
-			timer = 0;
-		}
 		
 		collisionOn = false;
 		gp.checker.checkTile(this);
@@ -112,68 +95,16 @@ public class Player extends Element {
 		
 			switch(direction) {
 				case 0:
-					y += -1 * (speed / 10);
-					x += 0 * (speed / 10);
-					break;
-				case 1:
-					y += -0.75 * (speed / 10);
-					x += 0.25 * (speed / 10);
-					break;
-				case 2:
-					y += -0.5 * (speed / 10);
-					x += 0.5 * (speed / 10);
-					break;
-				case 3:
-					y += -0.25 * (speed / 10);
-					x += 0.75 * (speed / 10);
+					y -= speed;
 					break;
 				case 4:
-					y += 0 * (speed / 10);
-					x += 1 * (speed / 10);
-					break;
-				case 5:
-					y += 0.25 * (speed / 10);
-					x += 0.75 * (speed / 10);
-					break;
-				case 6:
-					y += 0.5 * (speed / 10);
-					x += 0.5 * (speed / 10);
-					break;
-				case 7:
-					y += 0.75 * (speed / 10);
-					x += 0.25 * (speed / 10);
+					x += speed;
 					break;
 				case 8:
-					y += 1 * (speed / 10);
-					x += 0 * (speed / 10);
-					break;
-				case 9:
-					y += 0.75 * (speed / 10);
-					x += -0.25 * (speed / 10);
-					break;
-				case 10:
-					y += 0.5 * (speed / 10);
-					x += -0.5 * (speed / 10);
-					break;
-				case 11:
-					y += 0.25 * (speed / 10);
-					x += -0.75 * (speed / 10);
+					y += speed;
 					break;
 				case 12:
-					y += 0 * (speed / 10);
-					x += -1 * (speed / 10);
-					break;
-				case 13:
-					y += -0.25 * (speed / 10);
-					x += -0.75 * (speed / 10);
-					break;
-				case 14:
-					y += -0.5 * (speed / 10);
-					x += -0.5 * (speed / 10);
-					break;
-				case 15:
-					y += -0.75 * (speed / 10);
-					x += -0.25 * (speed / 10);
+					x -= speed;
 					break;
 			}
 			
