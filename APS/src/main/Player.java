@@ -69,7 +69,7 @@ public class Player extends Element {
 	}
 	
 	public void update() {
-		
+		/*
 		if((keyH.upPressed && !keyH.downPressed) || (!keyH.upPressed && keyH.downPressed)) {
 			
 			if(keyH.upPressed) { direction = 0;	}
@@ -84,9 +84,18 @@ public class Player extends Element {
 			
 		} else {
 			speed = 0;
+		} */
+		
+		if((keyH.upPressed || keyH.downPressed) && !(keyH.leftPressed || keyH.rightPressed)) {
+			if(keyH.upPressed && !keyH.downPressed) { direction = 0; }
+			if(keyH.downPressed && !keyH.upPressed) { direction = 8; }
+		} else if(!(keyH.upPressed || keyH.downPressed) && (keyH.leftPressed || keyH.rightPressed)) {
+			if(keyH.leftPressed && !keyH.rightPressed) { direction = 12; }
+			if(keyH.rightPressed && !keyH.leftPressed) { direction = 4; }
 		}
 		
-		
+		if(keyH.upPressed || keyH.downPressed || keyH.leftPressed || keyH.rightPressed) { speed = 4; } 
+		else { speed = 0; }
 		
 		collisionOn = false;
 		gp.checker.checkTile(this);
