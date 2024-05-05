@@ -28,9 +28,7 @@ public class Collision {
 		
 		case 0:
 	
-			System.out.println("oi");
-			
-			elementTopRow = (elementTopPlayerY - player.speed)/gp.tileSize;
+			elementTopRow = (elementTopPlayerY -+ player.speed)/gp.tileSize;
 			tileOne = gp.tileM.mapTileNum[elementLeftCol][elementTopRow];
 			tileTwo = gp.tileM.mapTileNum[elementRightCol][elementTopRow];
 			
@@ -43,19 +41,199 @@ public class Collision {
 			
 		case 1:
 			
+			elementRightCol = (elementRightPlayerX +- player.speed)/gp.tileSize;
+			tileOne = gp.tileM.mapTileNum[elementRightCol][elementTopRow];
+			tileTwo = gp.tileM.mapTileNum[elementRightCol][elementBottomRow];
+			
+			if(gp.tileM.tile[tileOne].collision == true || gp.tileM.tile[tileTwo].collision == true) {
+				player.collisionOn = true;
+				
+			}			
 			
 			break;
 			
 		case 2:
-
-			break;
+			
+			elementRightCol = (elementRightPlayerX +- player.speed)/gp.tileSize;
+			tileOne = gp.tileM.mapTileNum[elementRightCol][elementTopRow];
+			tileTwo = gp.tileM.mapTileNum[elementRightCol][elementBottomRow];
+			
+			if(gp.tileM.tile[tileOne].collision == true || gp.tileM.tile[tileTwo].collision == true) {
+				player.collisionOn = true;
+				
+			}			
+			
+			break;			
 			
 		case 3:
 			
+			elementRightCol = (elementRightPlayerX +- player.speed)/gp.tileSize;
+			tileOne = gp.tileM.mapTileNum[elementRightCol][elementTopRow];
+			tileTwo = gp.tileM.mapTileNum[elementRightCol][elementBottomRow];
+			
+			if(gp.tileM.tile[tileOne].collision == true || gp.tileM.tile[tileTwo].collision == true) {
+				player.collisionOn = true;
+				
+			}			
 			
 			break;
 			
-		default: System.out.println("oi");
+		case 4:
+			
+			elementRightCol = (elementRightPlayerX +- player.speed)/gp.tileSize;
+			tileOne = gp.tileM.mapTileNum[elementRightCol][elementTopRow];
+			tileTwo = gp.tileM.mapTileNum[elementRightCol][elementBottomRow];
+			
+			if(gp.tileM.tile[tileOne].collision == true || gp.tileM.tile[tileTwo].collision == true) {
+				player.collisionOn = true;
+				
+			}			
+			
+			break;
+			
+		case 5:
+			
+			elementRightCol = (elementRightPlayerX +- player.speed)/gp.tileSize;
+			tileOne = gp.tileM.mapTileNum[elementRightCol][elementTopRow];
+			tileTwo = gp.tileM.mapTileNum[elementRightCol][elementBottomRow];
+			
+			if(gp.tileM.tile[tileOne].collision == true || gp.tileM.tile[tileTwo].collision == true) {
+				player.collisionOn = true;
+				
+			}			
+			
+			break;
+		
+		case 6:
+			
+			elementRightCol = (elementRightPlayerX +- player.speed)/gp.tileSize;
+			tileOne = gp.tileM.mapTileNum[elementRightCol][elementTopRow];
+			tileTwo = gp.tileM.mapTileNum[elementRightCol][elementBottomRow];
+			
+			if(gp.tileM.tile[tileOne].collision == true || gp.tileM.tile[tileTwo].collision == true) {
+				player.collisionOn = true;
+				
+			}			
+			
+			break;
+		
+		case 7:
+			
+			elementRightCol = (elementRightPlayerX +- player.speed)/gp.tileSize;
+			tileOne = gp.tileM.mapTileNum[elementRightCol][elementTopRow];
+			tileTwo = gp.tileM.mapTileNum[elementRightCol][elementBottomRow];
+			
+			if(gp.tileM.tile[tileOne].collision == true || gp.tileM.tile[tileTwo].collision == true) {
+				player.collisionOn = true;
+				
+			}			
+			
+			break;
+			
+		case 8:
+			
+			elementBottomRow = (elementBottomPlayerY + player.speed)/gp.tileSize;
+			tileOne = gp.tileM.mapTileNum[elementLeftCol][elementBottomRow];
+			tileTwo = gp.tileM.mapTileNum[elementRightCol][elementBottomRow];
+			
+			if(gp.tileM.tile[tileOne].collision == true || gp.tileM.tile[tileTwo].collision == true) {
+				player.collisionOn = true;
+				
+			}
+			
+			break;
+			
+		case 9:
+			
+			elementLeftCol = (elementLeftPlayerX - player.speed)/gp.tileSize;
+			tileOne = gp.tileM.mapTileNum[elementLeftCol][elementTopRow];
+			tileTwo = gp.tileM.mapTileNum[elementLeftCol][elementBottomRow];
+			
+			if(gp.tileM.tile[tileOne].collision == true || gp.tileM.tile[tileTwo].collision == true) {
+				player.collisionOn = true;
+				
+			}
+
+			break;
+			
+		case 10:
+			
+			elementLeftCol = (elementLeftPlayerX - player.speed)/gp.tileSize;
+			tileOne = gp.tileM.mapTileNum[elementLeftCol][elementTopRow];
+			tileTwo = gp.tileM.mapTileNum[elementLeftCol][elementBottomRow];
+			
+			if(gp.tileM.tile[tileOne].collision == true || gp.tileM.tile[tileTwo].collision == true) {
+				player.collisionOn = true;
+				
+			}
+
+			break;
+			
+		case 11:
+			
+			elementLeftCol = (elementLeftPlayerX - player.speed)/gp.tileSize;
+			tileOne = gp.tileM.mapTileNum[elementLeftCol][elementTopRow];
+			tileTwo = gp.tileM.mapTileNum[elementLeftCol][elementBottomRow];
+			
+			if(gp.tileM.tile[tileOne].collision == true || gp.tileM.tile[tileTwo].collision == true) {
+				player.collisionOn = true;
+				
+			}
+
+			break;
+			
+		case 12:
+			
+			elementLeftCol = (elementLeftPlayerX - player.speed)/gp.tileSize;
+			tileOne = gp.tileM.mapTileNum[elementLeftCol][elementTopRow];
+			tileTwo = gp.tileM.mapTileNum[elementLeftCol][elementBottomRow];
+			
+			if(gp.tileM.tile[tileOne].collision == true || gp.tileM.tile[tileTwo].collision == true) {
+				player.collisionOn = true;
+				
+			}
+
+			break;
+			
+		case 13:
+			
+			elementLeftCol = (elementLeftPlayerX - player.speed)/gp.tileSize;
+			tileOne = gp.tileM.mapTileNum[elementLeftCol][elementTopRow];
+			tileTwo = gp.tileM.mapTileNum[elementLeftCol][elementBottomRow];
+			
+			if(gp.tileM.tile[tileOne].collision == true || gp.tileM.tile[tileTwo].collision == true) {
+				player.collisionOn = true;
+				
+			}
+
+			break;
+			
+		case 14:
+			
+			elementLeftCol = (elementLeftPlayerX - player.speed)/gp.tileSize;
+			tileOne = gp.tileM.mapTileNum[elementLeftCol][elementTopRow];
+			tileTwo = gp.tileM.mapTileNum[elementLeftCol][elementBottomRow];
+			
+			if(gp.tileM.tile[tileOne].collision == true || gp.tileM.tile[tileTwo].collision == true) {
+				player.collisionOn = true;
+				
+			}
+
+			break;
+			
+		case 15:
+			
+			elementLeftCol = (elementLeftPlayerX - player.speed)/gp.tileSize;
+			tileOne = gp.tileM.mapTileNum[elementLeftCol][elementTopRow];
+			tileTwo = gp.tileM.mapTileNum[elementLeftCol][elementBottomRow];
+			
+			if(gp.tileM.tile[tileOne].collision == true || gp.tileM.tile[tileTwo].collision == true) {
+				player.collisionOn = true;
+				
+			}
+
+			break;
+			
 		}
 		
 	}
