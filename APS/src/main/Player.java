@@ -20,7 +20,7 @@ public class Player extends Element {
 	public int screenX;
 	public int screenY;
 	int speed = 0;
-	int maxSpeed = 60;
+	int maxSpeed = 5;
 	int direction = 0;
 	int timer = 0;
 	int timerLimit = 9;
@@ -69,23 +69,7 @@ public class Player extends Element {
 	}
 	
 	public void update() {
-		/*
-		if((keyH.upPressed && !keyH.downPressed) || (!keyH.upPressed && keyH.downPressed)) {
-			
-			if(keyH.upPressed) { direction = 0;	}
-			if(keyH.downPressed) { direction = 8; }
-			speed = 4;
-			
-		} else if((keyH.rightPressed && !keyH.leftPressed) || (!keyH.rightPressed && keyH.leftPressed)) {
-			
-			if(keyH.leftPressed) { direction = 12; }
-			if(keyH.rightPressed) {	direction = 4;	}
-			speed = 4;
-			
-		} else {
-			speed = 0;
-		} */
-		
+				
 		if((keyH.upPressed || keyH.downPressed) && !(keyH.leftPressed || keyH.rightPressed)) {
 			if(keyH.upPressed && !keyH.downPressed) { direction = 0; }
 			if(keyH.downPressed && !keyH.upPressed) { direction = 8; }
@@ -94,8 +78,8 @@ public class Player extends Element {
 			if(keyH.rightPressed && !keyH.leftPressed) { direction = 4; }
 		}
 		
-		if(keyH.upPressed || keyH.downPressed || keyH.leftPressed || keyH.rightPressed) { speed = 4; } 
-		else { speed = 0; }
+		if((keyH.upPressed || keyH.downPressed || keyH.leftPressed || keyH.rightPressed) && speed < maxSpeed) { speed++; } 
+		else if(!(speed <= 0)){ speed--; }
 		
 		collisionOn = false;
 		gp.checker.checkTile(this);
