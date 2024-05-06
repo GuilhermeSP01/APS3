@@ -4,9 +4,11 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
+import obj.Trash;
 import tile.TileManager;
 
 public class GamePanel extends JPanel implements Runnable{
@@ -31,7 +33,9 @@ public class GamePanel extends JPanel implements Runnable{
 	KeyHandler keyH = new KeyHandler();
 	Thread gameThread;
 	public Collision checker = new Collision(this);
+	public InitObject initObject = new InitObject(this);
 	public Player player = new Player(this, keyH);
+	public ArrayList<Trash> objects = new ArrayList<Trash>();
 	
 	public GamePanel() {
 		this.setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -78,11 +82,16 @@ public class GamePanel extends JPanel implements Runnable{
 	
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);	
-		
 		Graphics2D g2 = (Graphics2D)g;
 		
 		tileM.draw(g2);
+		
+		for(int i = 0; i < objects.size(); i++) {
+			objects.get(i).draw(g2, this);
+		}
+		
 		player.draw(g2);
+		
 		g2.dispose();
 	}
 }

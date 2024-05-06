@@ -23,6 +23,8 @@ public class Player extends Element {
 	int maxSpeed = 5;
 	int direction = 0;
 	
+	boolean test = true;
+	
 	public Player(GamePanel gp, KeyHandler keyH) {
 		this.gp = gp;
 		this.keyH = keyH;
@@ -55,6 +57,16 @@ public class Player extends Element {
 	}
 	
 	public void update() {
+		
+		if(keyH.spacePressed && test) {
+			gp.objects.add(gp.initObject.newObj());
+			test = false;
+		}
+		
+		if(keyH.mPressed && !test) {
+			gp.objects.remove(0);
+			test = true;
+		}
 				
 		if((keyH.upPressed || keyH.downPressed) && !(keyH.leftPressed || keyH.rightPressed)) {
 			if(keyH.upPressed && !keyH.downPressed) { direction = 0; }
