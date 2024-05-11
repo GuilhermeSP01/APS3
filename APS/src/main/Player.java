@@ -23,7 +23,7 @@ public class Player extends Element {
 	int maxSpeed = 5;
 	int direction = 0;
 	
-	boolean test = true;
+	public boolean test = true;
 	
 	public Player(GamePanel gp, KeyHandler keyH) {
 		this.gp = gp;
@@ -38,6 +38,8 @@ public class Player extends Element {
 		solidArea = new Rectangle();
 		solidArea.x = 22;
 		solidArea.y = 22;
+		solidAreaDefaultX = solidArea.x;
+		solidAreaDefaultY = solidArea.y;
 		solidArea.width = 20;
 		solidArea.height = 20;
 		
@@ -62,11 +64,6 @@ public class Player extends Element {
 			gp.objects.add(gp.initObject.newObj());
 			test = false;
 		}
-		
-		if(keyH.mPressed && !test) {
-			gp.objects.remove(0);
-			test = true;
-		}
 				
 		if((keyH.upPressed || keyH.downPressed) && !(keyH.leftPressed || keyH.rightPressed)) {
 			if(keyH.upPressed && !keyH.downPressed) { direction = 0; }
@@ -81,6 +78,8 @@ public class Player extends Element {
 		
 		collisionOn = false;
 		gp.checker.checkTile(this);
+		
+		collectObject(gp.checker.checkObject(this, true));
 		
 		if(collisionOn == false) {
 		
@@ -97,6 +96,35 @@ public class Player extends Element {
 				case 12:
 					x -= speed;
 					break;
+			}
+			
+		}
+		
+	}
+	
+	public void collectObject(int index) {
+		
+		if(index != 999) {
+			
+			this.test = true;
+			
+			switch(gp.objects.get(index).type) {
+			case "Plastic":
+				System.out.println("COLETOU PLÁSTICO");// VC PROVAVELMENTE VAI USAR ESSAS LINHAS
+				gp.objects.remove(index);
+				break;
+			case "Glass":
+				System.out.println("COLETOU VIDRO");// VC PROVAVELMENTE VAI USAR ESSAS LINHAS
+				gp.objects.remove(index);
+				break;
+			case "Paper":
+				System.out.println("COLETOU PAPEL");// VC PROVAVELMENTE VAI USAR ESSAS LINHAS
+				gp.objects.remove(index);
+				break;
+			case "Organic":
+				System.out.println("COLETOU ORGÂNICO");// VC PROVAVELMENTE VAI USAR ESSAS LINHAS
+				gp.objects.remove(index);
+				break;
 			}
 			
 		}

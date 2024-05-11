@@ -28,7 +28,7 @@ public class Collision {
 		
 		case 0:
 	
-			elementTopRow = (elementTopPlayerY - player.speed/10 - 4)/gp.tileSize;
+			elementTopRow = (elementTopPlayerY - player.speed)/gp.tileSize;
 			tileOne = gp.tileM.mapTileNum[elementLeftCol][elementTopRow];
 			tileTwo = gp.tileM.mapTileNum[elementRightCol][elementTopRow];
 			
@@ -40,7 +40,7 @@ public class Collision {
 			
 		case 4:
 			
-			elementRightCol = (elementRightPlayerX + player.speed/10 + 4)/gp.tileSize;
+			elementRightCol = (elementRightPlayerX + player.speed)/gp.tileSize;
 			tileOne = gp.tileM.mapTileNum[elementRightCol][elementTopRow];
 			tileTwo = gp.tileM.mapTileNum[elementRightCol][elementBottomRow];
 			
@@ -52,7 +52,7 @@ public class Collision {
 			
 		case 8:
 			
-			elementBottomRow = (elementBottomPlayerY + player.speed/10 + 4)/gp.tileSize;
+			elementBottomRow = (elementBottomPlayerY + player.speed)/gp.tileSize;
 			tileOne = gp.tileM.mapTileNum[elementLeftCol][elementBottomRow];
 			tileTwo = gp.tileM.mapTileNum[elementRightCol][elementBottomRow];
 			
@@ -64,7 +64,7 @@ public class Collision {
 			
 		case 12:
 			
-			elementLeftCol = (elementLeftPlayerX - player.speed/10 - 4)/gp.tileSize;
+			elementLeftCol = (elementLeftPlayerX - player.speed)/gp.tileSize;
 			tileOne = gp.tileM.mapTileNum[elementLeftCol][elementTopRow];
 			tileTwo = gp.tileM.mapTileNum[elementLeftCol][elementBottomRow];
 			
@@ -78,5 +78,53 @@ public class Collision {
 		}
 		
 	}
-
+	
+	public int checkObject(Player element, boolean player) {
+		
+		int index = 999;
+		
+		for(int i = 0; i < gp.objects.size(); i++) {
+			
+			element.solidArea.x = element.x + element.solidArea.x;
+			element.solidArea.y = element.y + element.solidArea.y;
+			
+			gp.objects.get(i).solidArea.x = gp.objects.get(i).x + gp.objects.get(i).solidArea.x;
+			gp.objects.get(i).solidArea.y = gp.objects.get(i).y + gp.objects.get(i).solidArea.y;
+			
+			switch(element.direction) {
+			case 0:
+				element.solidArea.y -= element.speed;
+				if(element.solidArea.intersects(gp.objects.get(i).solidArea)) {
+					if(player) { index = i; }
+				}
+				break;
+			case 4:
+				element.solidArea.x += element.speed;
+				if(element.solidArea.intersects(gp.objects.get(i).solidArea)) {
+					if(player) { index = i; }
+				}
+				break;
+			case 8:
+				element.solidArea.y += element.speed;
+				if(element.solidArea.intersects(gp.objects.get(i).solidArea)) {
+					if(player) { index = i; }
+				}
+				break;
+			case 12:
+				element.solidArea.x -= element.speed;
+				if(element.solidArea.intersects(gp.objects.get(i).solidArea)) {
+					if(player) { index = i; }
+				}
+				break;
+			}
+			
+			element.solidArea.x = element.solidAreaDefaultX;
+			element.solidArea.y = element.solidAreaDefaultY;
+			gp.objects.get(i).solidArea.x = gp.objects.get(i).solidAreaDefaultX;
+			gp.objects.get(i).solidArea.y = gp.objects.get(i).solidAreaDefaultY;
+			
+		}
+		
+		return index;
+	}
 }
