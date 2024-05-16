@@ -1,5 +1,7 @@
 package main;
 
+import java.awt.BasicStroke;
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
@@ -9,10 +11,12 @@ import javax.imageio.ImageIO;
 
 import element.Element;
 
-public class Player extends Element {
+public class Player extends Element  {
 
 	GamePanel gp;
 	KeyHandler keyH;
+	Graphics2D g2;
+	
 	public BufferedImage sprite, Up, Down, Right, Left;
 	
 	public int x;
@@ -22,6 +26,9 @@ public class Player extends Element {
 	int speed = 0;
 	int maxSpeed = 5;
 	int direction = 0;
+	
+	public int slotCol = 0;
+	public int slotRow = 0;
 	
 	public boolean test = true;
 	
@@ -131,7 +138,47 @@ public class Player extends Element {
 		
 	}
 	
+	public void drawInventory() {
+		
+		int frameX = gp.tileSize*3;
+		int frameY = gp.tileSize*3;
+		int frameWidth = gp.tileSize*3;
+		int frameHeight = gp.tileSize*2;
+		
+		drawSubWindow(frameX, frameY, frameWidth, frameHeight);
+		
+		final int slotXstart = frameX - 50;
+		final int slotYstart = frameY - 50;
+		int slotX = slotXstart;
+		int slotY = slotYstart;
+		
+		int cursorX = slotXstart + (gp.tileSize + slotCol);
+		int cursorY = slotYstart + (gp.tileSize + slotRow);
+		int cursorWidth = gp.tileSize;
+		int cursorHeight = gp.tileSize;
+		
+		g2.setColor(Color.white);
+		g2.setStroke(new BasicStroke(3));
+		g2.drawRoundRect(cursorX, cursorY, cursorWidth, cursorHeight, 10, 10);
+	}
+	
+	public void drawSubWindow(int x, int y, int width, int height) {
+		
+		Color c = new Color(0, 0, 0, 100);
+		g2.setColor(c);
+		g2.fillRoundRect(x, y, width, height, 25, 25);
+		
+		c = new Color(255, 255, 255);
+		g2.setStroke(new BasicStroke(5));
+		g2.drawRoundRect(x+5, y+5, width-10, height-10, 15, 15);
+	}
+	
 	public void draw(Graphics2D g2) {
+		this.g2 = g2;
+		
+		if (keyH.iPressed) {
+			drawInventory();
+		}
 		
 		if(direction == 0) { sprite = Up; }
 		if(direction == 4) { sprite = Right; }
