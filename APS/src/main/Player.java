@@ -12,6 +12,7 @@ import javax.imageio.ImageIO;
 
 import element.Element;
 import obj.Glass;
+import obj.Trash;
 
 public class Player extends Element  {
 
@@ -21,7 +22,7 @@ public class Player extends Element  {
 	Glass glass;
 	
 	public BufferedImage sprite, Up, Down, Right, Left;
-	public ArrayList<Player> inventory = new ArrayList<>();
+	public ArrayList<Trash> inventory = new ArrayList<>();
 	public final int maxInventorySize = 6;
 	
 	public int x;
@@ -121,34 +122,35 @@ public class Player extends Element  {
 			
 				this.test = true;
 				
-				switch(gp.objects.get(index).type) {
-				case "Plastic":
-					System.out.println("COLETOU PLÁSTICO");// VC PROVAVELMENTE VAI USAR ESSAS LINHAS
-					gp.objects.remove(index);
-					break;
-				case "Glass":
-					System.out.println("COLETOU VIDRO");// VC PROVAVELMENTE VAI USAR ESSAS LINHAS
-					gp.objects.remove(index);
-					break;
-				case "Paper":
-					System.out.println("COLETOU PAPEL");// VC PROVAVELMENTE VAI USAR ESSAS LINHAS
-					gp.objects.remove(index);
-					break;
-				case "Organic":
-					System.out.println("COLETOU ORGÂNICO");// VC PROVAVELMENTE VAI USAR ESSAS LINHAS
-					gp.objects.remove(index);
-					break;
 			
+				if(inventory.size() < maxInventorySize) {
+					switch(gp.objects.get(index).type) {
+					case "Plastic":
+						System.out.println("COLETOU PLÁSTICO");// VC PROVAVELMENTE VAI USAR ESSAS LINHAS
+						inventory.add(gp.objects.get(index));
+						gp.objects.remove(index);
+						break;
+					case "Glass":
+						System.out.println("COLETOU VIDRO");// VC PROVAVELMENTE VAI USAR ESSAS LINHAS
+						inventory.add(gp.objects.get(index));
+						gp.objects.remove(index);
+						break;
+					case "Paper":
+						System.out.println("COLETOU PAPEL");// VC PROVAVELMENTE VAI USAR ESSAS LINHAS
+						inventory.add(gp.objects.get(index));
+						gp.objects.remove(index);
+						break;
+					case "Organic":
+						System.out.println("COLETOU ORGÂNICO");// VC PROVAVELMENTE VAI USAR ESSAS LINHAS
+						inventory.add(gp.objects.get(index));
+						gp.objects.remove(index);
+						break;
+					}
 			}
 			
 		}
 		
 	}
-	
-	/*public void setItems() {
-		
-		inventory.add();
-	}*/
 	
 	public void drawInventory() {
 		
@@ -165,10 +167,18 @@ public class Player extends Element  {
 		int slotY = slotYstart;
 		int slotSize = gp.tileSize+3;
 		
-		/*for(int i = 0; i < gp.player.inventory.size(); i++) {
+		for(int i = 0; i < gp.player.inventory.size(); i++) {
 			
-			g2.drawImage(gp.player.inventory.get(i)., slotX, slotY, null);
-		}*/
+			g2.drawImage(inventory.get(i).image, slotX, slotY, gp.tileSize, gp.tileSize, null);
+			
+			slotX += slotSize;
+			
+			if(i == 2) {
+				slotX = slotXstart;
+				slotY += gp.tileSize;
+			}
+			
+		}
 		
 		int cursorX = slotXstart + (slotSize * slotCol);
 		int cursorY = slotYstart + (slotSize * slotRow);
