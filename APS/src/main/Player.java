@@ -6,18 +6,23 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
 import element.Element;
+import obj.Glass;
 
 public class Player extends Element  {
 
 	GamePanel gp;
 	KeyHandler keyH;
 	Graphics2D g2;
+	Glass glass;
 	
 	public BufferedImage sprite, Up, Down, Right, Left;
+	public ArrayList<Player> inventory = new ArrayList<>();
+	public final int maxInventorySize = 6;
 	
 	public int x;
 	public int y;
@@ -51,6 +56,7 @@ public class Player extends Element  {
 		solidArea.height = 20;
 		
 		getPlayerImage();
+		//setItems();
 	}
 	
 	public void getPlayerImage() {
@@ -113,47 +119,59 @@ public class Player extends Element  {
 		
 		if(index != 999) {
 			
-			this.test = true;
+				this.test = true;
+				
+				switch(gp.objects.get(index).type) {
+				case "Plastic":
+					System.out.println("COLETOU PLÁSTICO");// VC PROVAVELMENTE VAI USAR ESSAS LINHAS
+					gp.objects.remove(index);
+					break;
+				case "Glass":
+					System.out.println("COLETOU VIDRO");// VC PROVAVELMENTE VAI USAR ESSAS LINHAS
+					gp.objects.remove(index);
+					break;
+				case "Paper":
+					System.out.println("COLETOU PAPEL");// VC PROVAVELMENTE VAI USAR ESSAS LINHAS
+					gp.objects.remove(index);
+					break;
+				case "Organic":
+					System.out.println("COLETOU ORGÂNICO");// VC PROVAVELMENTE VAI USAR ESSAS LINHAS
+					gp.objects.remove(index);
+					break;
 			
-			switch(gp.objects.get(index).type) {
-			case "Plastic":
-				System.out.println("COLETOU PLÁSTICO");// VC PROVAVELMENTE VAI USAR ESSAS LINHAS
-				gp.objects.remove(index);
-				break;
-			case "Glass":
-				System.out.println("COLETOU VIDRO");// VC PROVAVELMENTE VAI USAR ESSAS LINHAS
-				gp.objects.remove(index);
-				break;
-			case "Paper":
-				System.out.println("COLETOU PAPEL");// VC PROVAVELMENTE VAI USAR ESSAS LINHAS
-				gp.objects.remove(index);
-				break;
-			case "Organic":
-				System.out.println("COLETOU ORGÂNICO");// VC PROVAVELMENTE VAI USAR ESSAS LINHAS
-				gp.objects.remove(index);
-				break;
 			}
 			
 		}
 		
 	}
 	
+	/*public void setItems() {
+		
+		inventory.add();
+	}*/
+	
 	public void drawInventory() {
 		
-		int frameX = gp.tileSize*3;
-		int frameY = gp.tileSize*3;
-		int frameWidth = gp.tileSize*3;
-		int frameHeight = gp.tileSize*2;
+		int frameX = gp.tileSize*2;
+		int frameY = gp.tileSize;
+		int frameWidth = gp.tileSize*4;
+		int frameHeight = gp.tileSize*3;
 		
 		drawSubWindow(frameX, frameY, frameWidth, frameHeight);
 		
-		final int slotXstart = frameX - 50;
-		final int slotYstart = frameY - 50;
+		final int slotXstart = frameX + 30;
+		final int slotYstart = frameY + 30;
 		int slotX = slotXstart;
 		int slotY = slotYstart;
+		int slotSize = gp.tileSize+3;
 		
-		int cursorX = slotXstart + (gp.tileSize + slotCol);
-		int cursorY = slotYstart + (gp.tileSize + slotRow);
+		/*for(int i = 0; i < gp.player.inventory.size(); i++) {
+			
+			g2.drawImage(gp.player.inventory.get(i)., slotX, slotY, null);
+		}*/
+		
+		int cursorX = slotXstart + (slotSize * slotCol);
+		int cursorY = slotYstart + (slotSize * slotRow);
 		int cursorWidth = gp.tileSize;
 		int cursorHeight = gp.tileSize;
 		
@@ -169,15 +187,15 @@ public class Player extends Element  {
 		g2.fillRoundRect(x, y, width, height, 25, 25);
 		
 		c = new Color(255, 255, 255);
-		g2.setStroke(new BasicStroke(5));
+		g2.setStroke(new BasicStroke(3));
 		g2.drawRoundRect(x+5, y+5, width-10, height-10, 15, 15);
 	}
 	
 	public void draw(Graphics2D g2) {
 		this.g2 = g2;
 		
-		if (keyH.iPressed) {
-			drawInventory();
+		if (gp.gameState == gp.pauseState) {
+				drawInventory();
 		}
 		
 		if(direction == 0) { sprite = Up; }

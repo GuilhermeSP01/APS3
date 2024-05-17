@@ -8,7 +8,7 @@ import javax.imageio.ImageIO;
 public class Glass extends Trash{
 
 	public Glass(int xPos, int yPos) {
-
+		
 		Random random = new Random();
 		int n = random.nextInt(3);
 		
