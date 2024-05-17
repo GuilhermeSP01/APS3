@@ -34,6 +34,7 @@ public class GamePanel extends JPanel implements Runnable{
 	Thread gameThread;
 	public Collision checker = new Collision(this);
 	public InitObject initObject = new InitObject(this);
+	public SetDiscardObject objSetter = new SetDiscardObject(this);
 	public Player player = new Player(this, keyH);
 	public ArrayList<Trash> objects = new ArrayList<Trash>();
 	
@@ -51,6 +52,7 @@ public class GamePanel extends JPanel implements Runnable{
 	
 	public void setupGame() {
 		
+		objSetter.setObject();
 		gameState = playState;
 	}
 
