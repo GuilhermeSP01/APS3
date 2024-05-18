@@ -37,7 +37,7 @@ public class SetDiscardObject {
 		
 		gp.discard[5] = new DiscardPlastic();
 		gp.discard[5].x = 28 * gp.tileSize;
-		gp.discard[5].y = 29 * gp.tileSize;		
+		gp.discard[5].y = 29 * gp.tileSize;
 		
 	}
 }
