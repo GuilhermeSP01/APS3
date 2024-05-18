@@ -42,8 +42,8 @@ public class Player extends Element  {
 		this.gp = gp;
 		this.keyH = keyH;
 		
-		this.x = gp.tileSize * 12;
-		this.y = gp.tileSize * 6;
+		this.x = gp.tileSize * 19;
+		this.y = gp.tileSize * 11;
 		
 		this.screenX = gp.screenWidth/2 - (gp.tileSize/2);
 		this.screenY = gp.screenHeight/2 - (gp.tileSize/2);
@@ -57,7 +57,6 @@ public class Player extends Element  {
 		solidArea.height = 20;
 		
 		getPlayerImage();
-		//setItems();
 	}
 	
 	public void getPlayerImage() {

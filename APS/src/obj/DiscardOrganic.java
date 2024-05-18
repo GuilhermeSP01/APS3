@@ -1,5 +1,18 @@
 package obj;
 
-public class DiscardOrganic {
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
+
+public class DiscardOrganic extends Trash {
+	
+	public DiscardOrganic() {
+	
+		type = "dOrganic";
+		try {
+			image = ImageIO.read(getClass().getResourceAsStream("/tiles/t5.png"));
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+	}
 }

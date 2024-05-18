@@ -16,5 +16,5 @@ public class DiscardGlass extends Trash {
 		}
 	}
 
-	}
+}
 	

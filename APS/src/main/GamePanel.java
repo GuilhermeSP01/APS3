@@ -38,7 +38,7 @@ public class GamePanel extends JPanel implements Runnable{
 	public SetDiscardObject objSetter = new SetDiscardObject(this);
 	public Player player = new Player(this, keyH);
 	public ArrayList<Trash> objects = new ArrayList<Trash>();
-	public Trash discard[] = new Trash[4];
+	public Trash discard[] = new Trash[6];
 	
 	public int gameState;
 	public final int playState = 1;
