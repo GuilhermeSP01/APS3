@@ -22,8 +22,8 @@ public class GamePanel extends JPanel implements Runnable{
 	public final int screenWidth = tileSize * maxScreenCol;
 	public final int screenHeight = tileSize * maxScreenRow;
 	
-	public final int maxWorldCol = 33;
-	public final int maxWorldRow = 28;
+	public final int maxWorldCol = 47;
+	public final int maxWorldRow = 34;
 	public final int worldWidth = tileSize * maxWorldCol;
 	public final int worldHeight = tileSize * maxWorldRow;
 	
@@ -37,7 +37,6 @@ public class GamePanel extends JPanel implements Runnable{
 	public SetDiscardObject objSetter = new SetDiscardObject(this);
 	public Player player = new Player(this, keyH);
 	public ArrayList<Trash> objects = new ArrayList<Trash>();
-	public Trash discard[] = new Trash[4];
 	
 	public int gameState;
 	public final int playState = 1;
