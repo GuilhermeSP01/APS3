@@ -6,7 +6,7 @@ import javax.imageio.ImageIO;
 
 public class DiscardGlass extends Trash {
 	
-	public void ObjDiscardGlass() {
+	public DiscardGlass() {
 		
 		type = "dGlass";
 		try {
