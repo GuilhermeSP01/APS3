@@ -29,5 +29,8 @@ public class Trash {
 			g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
 			
 		}
+
 	}
+	
+	
 }

@@ -18,11 +18,11 @@ public class TileManager {
 	public TileManager(GamePanel gp) {
 		this.gp = gp;
 
-		tile = new Tile[22];
+		tile = new Tile[28];
 		mapTileNum = new int[gp.maxWorldCol][gp.maxWorldRow];
 		
 		getTileImage();
-		loadMap("/maps/map-side-one.txt");
+		loadMap("/maps/map.txt");
 	}
 	
 	public void getTileImage() {
@@ -99,6 +99,24 @@ public class TileManager {
 			
 			tile[21] = new Tile();
 			tile[21].image = ImageIO.read(getClass().getResourceAsStream("/tiles/22.png"));
+			
+			tile[22] = new Tile();
+			tile[22].image = ImageIO.read(getClass().getResourceAsStream("/tiles/grass1.png"));
+			
+			tile[23] = new Tile();
+			tile[23].image = ImageIO.read(getClass().getResourceAsStream("/tiles/grass2.png"));
+			
+			tile[24] = new Tile();
+			tile[24].image = ImageIO.read(getClass().getResourceAsStream("/tiles/grass3.png"));
+			
+			tile[25] = new Tile();
+			tile[25].image = ImageIO.read(getClass().getResourceAsStream("/tiles/grass4.png"));
+			
+			tile[26] = new Tile();
+			tile[26].image = ImageIO.read(getClass().getResourceAsStream("/tiles/grass5.png"));
+			
+			tile[27] = new Tile();
+			tile[27].image = ImageIO.read(getClass().getResourceAsStream("/tiles/grass6.png"));
 			
 		}catch(IOException e) {
 			e.printStackTrace();

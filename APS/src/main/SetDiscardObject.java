@@ -1,5 +1,7 @@
 package main;
 
+import obj.DiscardGlass;
+
 public class SetDiscardObject {
 	
 	GamePanel gp;
@@ -9,6 +11,10 @@ public class SetDiscardObject {
 	}
 
 	public void setObject() {
+		
+		//gp.discard[0] = new DiscardGlass();
+		//gp.discard[0].x = 
+		
 		
 	}
 }
