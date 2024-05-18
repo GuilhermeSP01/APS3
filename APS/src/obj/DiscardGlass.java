@@ -15,7 +15,6 @@ public class DiscardGlass extends Trash {
 			e.printStackTrace();
 		}
 	}
-	//oi
 
 	}
 	

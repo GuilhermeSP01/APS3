@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
+import obj.DiscardGlass;
 import obj.Trash;
 import tile.TileManager;
 
@@ -37,6 +38,7 @@ public class GamePanel extends JPanel implements Runnable{
 	public SetDiscardObject objSetter = new SetDiscardObject(this);
 	public Player player = new Player(this, keyH);
 	public ArrayList<Trash> objects = new ArrayList<Trash>();
+	public Trash discard[] = new Trash[4];
 	
 	public int gameState;
 	public final int playState = 1;
@@ -52,8 +54,8 @@ public class GamePanel extends JPanel implements Runnable{
 	
 	public void setupGame() {
 		
-		objSetter.setObject();
 		gameState = playState;
+		objSetter.setObject();
 	}
 
 	public void startGameThread() {
@@ -106,6 +108,13 @@ public class GamePanel extends JPanel implements Runnable{
 		
 		for(int i = 0; i < objects.size(); i++) {
 			objects.get(i).draw(g2, this);
+		}
+		
+		for(int i = 0; i < discard.length; i++) {
+			
+			if(discard[i] != null) {
+				discard[i].draw(g2, this);
+			}
 		}
 		
 		player.draw(g2);
