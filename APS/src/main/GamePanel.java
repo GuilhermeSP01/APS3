@@ -69,6 +69,8 @@ public class GamePanel extends JPanel implements Runnable{
 
 		double drawInterval = 1000000000/FPS;
 		double delta = 0;
+		int secondsPassed = 0;
+		long timer = 0;
 		long lastTime = System.nanoTime();
 		long currentTime;
 		
@@ -76,12 +78,23 @@ public class GamePanel extends JPanel implements Runnable{
 			
 			currentTime = System.nanoTime();
 			delta += (currentTime - lastTime) / drawInterval;
+			timer += (currentTime - lastTime);
 			lastTime = currentTime;
 			
 			if(delta >= 1) {
 			update();
 			repaint();
 			delta--;
+			}
+			
+			if(timer >= 1000000000) {
+				secondsPassed ++;
+				timer = 0;
+			}
+			
+			if(secondsPassed >= 8) {
+				objects.add(initObject.newObj());
+				secondsPassed = 0;
 			}
 		}
 		

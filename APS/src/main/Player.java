@@ -36,8 +36,6 @@ public class Player extends Element  {
 	public int slotCol = 0;
 	public int slotRow = 0;
 	
-	public boolean test = true;
-	
 	public Player(GamePanel gp, KeyHandler keyH) {
 		this.gp = gp;
 		this.keyH = keyH;
@@ -72,11 +70,6 @@ public class Player extends Element  {
 	}
 	
 	public void update() {
-		
-		if(keyH.spacePressed && test) {
-			gp.objects.add(gp.initObject.newObj());
-			test = false;
-		}
 				
 		if((keyH.upPressed || keyH.downPressed) && !(keyH.leftPressed || keyH.rightPressed)) {
 			if(keyH.upPressed && !keyH.downPressed) { direction = 0; }
@@ -118,34 +111,10 @@ public class Player extends Element  {
 	public void collectObject(int index) {
 		
 		if(index != 999) {
-			
-				this.test = true;
-				
-			
 				if(inventory.size() < maxInventorySize) {
-					switch(gp.objects.get(index).type) {
-					case "Plastic":
-						System.out.println("COLETOU PLÁSTICO");// VC PROVAVELMENTE VAI USAR ESSAS LINHAS
-						inventory.add(gp.objects.get(index));
-						gp.objects.remove(index);
-						break;
-					case "Glass":
-						System.out.println("COLETOU VIDRO");// VC PROVAVELMENTE VAI USAR ESSAS LINHAS
-						inventory.add(gp.objects.get(index));
-						gp.objects.remove(index);
-						break;
-					case "Paper":
-						System.out.println("COLETOU PAPEL");// VC PROVAVELMENTE VAI USAR ESSAS LINHAS
-						inventory.add(gp.objects.get(index));
-						gp.objects.remove(index);
-						break;
-					case "Organic":
-						System.out.println("COLETOU ORGÂNICO");// VC PROVAVELMENTE VAI USAR ESSAS LINHAS
-						inventory.add(gp.objects.get(index));
-						gp.objects.remove(index);
-						break;
-					}
-			}
+					inventory.add(gp.objects.get(index));
+					gp.objects.remove(index);
+				}
 			
 		}
 		
