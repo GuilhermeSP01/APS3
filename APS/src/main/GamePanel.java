@@ -92,7 +92,7 @@ public class GamePanel extends JPanel implements Runnable{
 				timer = 0;
 			}
 			
-			if(secondsPassed >= 8) {
+			if(secondsPassed >= 2) {
 				objects.add(initObject.newObj());
 				secondsPassed = 0;
 			}
