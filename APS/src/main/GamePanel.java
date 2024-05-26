@@ -2,6 +2,7 @@ package main;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
@@ -127,6 +128,7 @@ public class GamePanel extends JPanel implements Runnable{
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);	
 		Graphics2D g2 = (Graphics2D)g;
+		String text;
 		
 		tileM.draw(g2);
 		
@@ -142,6 +144,14 @@ public class GamePanel extends JPanel implements Runnable{
 		}
 		
 		player.draw(g2);
+		
+		g2.setFont(new Font("Arial", 30, 30));
+		g2.setColor(Color.white);
+		text = "Score: " + player.score;
+		g2.drawString(text, 8, 38);
+		if(gameTime[1] < 10) { text = gameTime[0] + ":0" + gameTime[1]; }
+		if(gameTime[1] >= 10) { text = gameTime[0] + ":" + gameTime[1]; }
+		g2.drawString(text, (screenWidth/2 - (int)g2.getFontMetrics().getStringBounds(text, g2).getWidth()/2), 38);
 		
 		g2.dispose();
 	}
