@@ -43,6 +43,7 @@ public class GamePanel extends JPanel implements Runnable{
 	public int gameState;
 	public final int playState = 1;
 	public final int pauseState = 2;
+	public int[] gameTime = {0, 9};
 	
 	public GamePanel() {
 		this.setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -56,6 +57,8 @@ public class GamePanel extends JPanel implements Runnable{
 		
 		gameState = playState;
 		objSetter.setObject();
+		System.out.printf("%s:0%s%n", gameTime[0], gameTime[1]);
+		
 	}
 
 	public void startGameThread() {
@@ -89,10 +92,18 @@ public class GamePanel extends JPanel implements Runnable{
 			
 			if(timer >= 1000000000) {
 				secondsPassed ++;
+				gameTime[1] --;
+				if(gameTime[1] < 0) {
+					gameTime[1] = 59;
+					gameTime[0] --;
+				}
+				if(gameTime[1] < 10) { System.out.printf("%s:0%s%n", gameTime[0], gameTime[1]); }
+				else { System.out.printf("%s:%s%n", gameTime[0], gameTime[1]); }
+				if(gameTime[0] < 1 && gameTime[1] < 1) { while(true){} }
 				timer = 0;
 			}
 			
-			if(secondsPassed >= 2) {
+			if(secondsPassed >= 4) {
 				objects.add(initObject.newObj());
 				secondsPassed = 0;
 			}

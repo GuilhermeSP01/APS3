@@ -8,7 +8,7 @@ public class DiscardGlass extends Trash {
 	
 	public DiscardGlass() {
 		
-		type = "dGlass";
+		type = "Glass";
 		try {
 			image = ImageIO.read(getClass().getResourceAsStream("/tiles/t5.png"));
 		}catch(IOException e) {

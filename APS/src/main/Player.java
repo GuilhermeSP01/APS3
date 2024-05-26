@@ -32,9 +32,13 @@ public class Player extends Element  {
 	int speed = 0;
 	int maxSpeed = 5;
 	int direction = 0;
+	public int score = 0;
 	
 	public int slotCol = 0;
 	public int slotRow = 0;
+	public int discardIndex;
+	public boolean onDiscard = false;
+	public String discardPoint = "";
 	
 	public Player(GamePanel gp, KeyHandler keyH) {
 		this.gp = gp;
@@ -86,6 +90,13 @@ public class Player extends Element  {
 		gp.checker.checkTile(this);
 		
 		collectObject(gp.checker.checkObject(this, true));
+		
+		discardIndex = gp.checker.checkDiscard(this, true);
+		if(discardIndex != 999) { 
+			onDiscard = true; 
+			discardPoint = gp.discard[discardIndex].type;
+		}
+		else { onDiscard = false; }
 		
 		if(collisionOn == false) {
 		

@@ -8,7 +8,7 @@ public class DiscardPlastic extends Trash {
 	
 	public DiscardPlastic() {
 		
-		type = "dOrganic";
+		type = "Plastic";
 		try {
 			image = ImageIO.read(getClass().getResourceAsStream("/tiles/t5.png"));
 		}catch(IOException e) {
