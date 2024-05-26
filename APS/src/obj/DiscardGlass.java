@@ -16,6 +16,6 @@ public class DiscardGlass extends Trash {
 		}
 		collision = true;
 	}
-
+	
 }
 	

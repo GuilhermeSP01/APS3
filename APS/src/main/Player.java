@@ -33,11 +33,8 @@ public class Player extends Element  {
 	int maxSpeed = 5;
 	int direction = 0;
 	
-	int hasObject = 0;
-	
 	public int slotCol = 0;
 	public int slotRow = 0;
-	public boolean collisionOn;
 	
 	public Player(GamePanel gp, KeyHandler keyH) {
 		this.gp = gp;
@@ -88,8 +85,6 @@ public class Player extends Element  {
 		collisionOn = false;
 		gp.checker.checkTile(this);
 		
-		discardObject(gp.checker.checkDiscard(this, true));
-		
 		collectObject(gp.checker.checkObject(this, true));
 		
 		if(collisionOn == false) {
@@ -116,7 +111,7 @@ public class Player extends Element  {
 	public void collectObject(int index) {
 		
 		if(index != 999) {
-			
+						
 			if(inventory.size() < maxInventorySize) {
 				inventory.add(gp.objects.get(index));
 				gp.objects.remove(index);
@@ -126,38 +121,6 @@ public class Player extends Element  {
 		
 	}
 	
-	public void discardObject(int index) {
-		
-		if(index != 999) {
-			
-			System.out.println("oi");
-			String objectName = inventory.get(index).type;
-			
-			switch(objectName) {
-			case "dGlass":
-				if(hasObject > 0) {
-					hasObject--;
-				}
-				break;
-			case "dOrganic":
-				if(hasObject > 0) {
-					hasObject--;
-				}
-				break;
-			case "dPaper":
-				if(hasObject > 0) {
-					hasObject--;
-				}				
-				break;
-			case "dPlastic":
-				if(hasObject > 0) {
-					hasObject--;
-				}				
-				break;
-			}
-			
-		}
-	}
 	
 	public void drawInventory() {
 		
