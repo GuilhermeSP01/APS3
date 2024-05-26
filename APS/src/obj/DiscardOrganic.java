@@ -14,5 +14,6 @@ public class DiscardOrganic extends Trash {
 		}catch(IOException e) {
 			e.printStackTrace();
 		}
+		collision = true;
 	}
 }

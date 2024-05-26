@@ -14,6 +14,7 @@ public class DiscardGlass extends Trash {
 		}catch(IOException e) {
 			e.printStackTrace();
 		}
+		collision = true;
 	}
 
 }

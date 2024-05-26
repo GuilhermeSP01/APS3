@@ -14,5 +14,6 @@ public class DiscardPlastic extends Trash {
 		}catch(IOException e) {
 			e.printStackTrace();
 		}
+		collision = true;
 	}
 }

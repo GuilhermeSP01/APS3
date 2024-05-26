@@ -14,5 +14,6 @@ public class DiscardPaper extends Trash{
 		}catch(IOException e) {
 			e.printStackTrace();
 		}
+		collision = true;
 	}
 }
