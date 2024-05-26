@@ -103,7 +103,6 @@ public class KeyHandler implements KeyListener{
 							gp.gameTime[1] -= 60;
 							gp.gameTime[0] ++;
 						}
-						
 						gp.player.inventory.remove(gp.player.slotRow*3 + gp.player.slotCol);
 					}
 				}

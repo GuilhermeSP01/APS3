@@ -9,11 +9,11 @@ public class DiscardPlastic extends Trash {
 	public DiscardPlastic() {
 		
 		type = "Plastic";
-		try {
+		/*try {
 			image = ImageIO.read(getClass().getResourceAsStream("/tiles/t5.png"));
 		}catch(IOException e) {
 			e.printStackTrace();
-		}
+		}*/
 		collision = true;
 	}
 }

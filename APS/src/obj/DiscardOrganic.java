@@ -9,11 +9,11 @@ public class DiscardOrganic extends Trash {
 	public DiscardOrganic() {
 	
 		type = "Organic";
-		try {
+		/*try {
 			image = ImageIO.read(getClass().getResourceAsStream("/tiles/t5.png"));
 		}catch(IOException e) {
 			e.printStackTrace();
-		}
+		}*/
 		collision = true;
 	}
 }
