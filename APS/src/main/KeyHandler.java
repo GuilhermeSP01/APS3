@@ -89,14 +89,22 @@ public class KeyHandler implements KeyListener{
 				if(code == KeyEvent.VK_ENTER) {
 					if((gp.player.inventory.size() > 0) && (gp.player.inventory.size() - 1 >= gp.player.slotRow*3 + gp.player.slotCol)) {
 						if(gp.player.inventory.get(gp.player.slotRow*3 + gp.player.slotCol).type.equals(gp.player.discardPoint)) {
-							System.out.println("Tipo correspondente, +10 pontos");
 							gp.player.score += 10;
+							gp.gameTime[1] += 2;
 						} else {
-							System.out.println("Tipo diferente, -10 pontos");
 							gp.player.score -= 10;
+							gp.gameTime[1] -= 4;
 						}
+						if(gp.gameTime[1] < 0) {
+							gp.gameTime[1] += 60;
+							gp.gameTime[0] --;
+						}
+						if(gp.gameTime[1] > 59) {
+							gp.gameTime[1] -= 60;
+							gp.gameTime[0] ++;
+						}
+						
 						gp.player.inventory.remove(gp.player.slotRow*3 + gp.player.slotCol);
-						System.out.printf("Pontuação: %s %n", gp.player.score);
 					}
 				}
 			}

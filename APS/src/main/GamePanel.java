@@ -58,7 +58,6 @@ public class GamePanel extends JPanel implements Runnable{
 		
 		gameState = playState;
 		objSetter.setObject();
-		System.out.printf("%s:0%s%n", gameTime[0], gameTime[1]);
 		
 	}
 
@@ -95,11 +94,13 @@ public class GamePanel extends JPanel implements Runnable{
 				secondsPassed ++;
 				gameTime[1] --;
 				if(gameTime[1] < 0) {
-					gameTime[1] = 59;
+					gameTime[1] += 60;
 					gameTime[0] --;
 				}
-				if(gameTime[1] < 10) { System.out.printf("%s:0%s%n", gameTime[0], gameTime[1]); }
-				else { System.out.printf("%s:%s%n", gameTime[0], gameTime[1]); }
+				if(gameTime[1] > 59) {
+					gameTime[1] -= 60;
+					gameTime[0] ++;
+				}
 				if(gameTime[0] < 1 && gameTime[1] < 1) { while(true){} }
 				timer = 0;
 			}
@@ -146,12 +147,12 @@ public class GamePanel extends JPanel implements Runnable{
 		player.draw(g2);
 		
 		g2.setFont(new Font("Arial", 30, 30));
-		g2.setColor(Color.white);
-		text = "Score: " + player.score;
-		g2.drawString(text, 8, 38);
+		g2.setColor(Color.black);
+		text = "" + player.score;
+		g2.drawString(text, 8, 36);
 		if(gameTime[1] < 10) { text = gameTime[0] + ":0" + gameTime[1]; }
 		if(gameTime[1] >= 10) { text = gameTime[0] + ":" + gameTime[1]; }
-		g2.drawString(text, (screenWidth/2 - (int)g2.getFontMetrics().getStringBounds(text, g2).getWidth()/2), 38);
+		g2.drawString(text, (screenWidth/2 - (int)g2.getFontMetrics().getStringBounds(text, g2).getWidth()/2), 36);
 		
 		g2.dispose();
 	}
